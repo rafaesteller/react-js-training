@@ -73,9 +73,18 @@ class App extends Component {
 
     }
 
+    const classes = [];
+    if(this.state.persons.length <= 2) {
+        classes.push('red');
+    }
+    if(this.state.persons.length <=1) {
+      classes.push('bold');
+    }
+    
     return (
       <div className="App">
        <h1>I am react</h1>
+       <p class={classes.join(' ')}>Some poeple here</p>
         <button style={style} 
         onClick={this.togglePersonsHandler}>Switch name</button>
         {persons}      
