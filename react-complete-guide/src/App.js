@@ -45,8 +45,9 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
+      color: 'white',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
@@ -65,16 +66,18 @@ class App extends Component {
               key={person.id}
               changed={(event) => this.nameChangedHandler(event, person.id)} />
             })
-          }
-          
+          }       
         </div>
       )
+      style.backgroundColor = 'red'
+
     }
 
     return (
       <div className="App">
        <h1>I am react</h1>
-        <button style={style} onClick={this.togglePersonsHandler}>Switch name</button>
+        <button style={style} 
+        onClick={this.togglePersonsHandler}>Switch name</button>
         {persons}      
       </div>
     );
