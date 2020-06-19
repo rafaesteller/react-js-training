@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person';
+import classes from './App.css';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  state = {
+   state = {
     persons: [
       {id: 1, 'name': 'sdsd', 'age': '29'},
       {id:2,'name': 'Ash', 'age': '19'},
@@ -43,43 +44,18 @@ class App extends Component {
     this.setState( {showPersons: !this.state.showPersons})
   }
 
-  render() {
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
-    let persons = null;
-
-    if ( this.state.showPersons ) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person 
-              click={() => this.deletePersonHandler(index)} 
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-            })
-          }
-          
-        </div>
-      )
-    }
-
+  render() {       
     return (
-      <div className="App">
-       <h1>I am react</h1>
-        <button style={style} onClick={this.togglePersonsHandler}>Switch name</button>
-        {persons}      
+      <div className={classes.App}>
+       <Cockpit showPerson={this.state.showPersons} persons={this.state.persons}/>
+       <Persons 
+            persons = {this.state.persons}
+            clicked = {this.deletePersonHandler}
+            changed = {this.nameChangedHandler}
+          />      
       </div>
     );
-
-  };
-};
+  }
+}
 
 export default App;
