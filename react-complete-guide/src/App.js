@@ -10,11 +10,13 @@ color: white;
 border: 1px solid blue;
 padding: 8px;
 cursor: pointer;
+
 &:hover {
   background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-  color: black
+  color: black;
 }
-`
+`;
+
 class App extends Component {
 
   state = {
@@ -82,7 +84,8 @@ class App extends Component {
       <div className="App">
        <h1>I am react</h1>
        <p>Some poeple here</p>
-        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>Toggle persons</StyledButton>
+        <StyledButton alt={this.state.showPersons} 
+        onClick={this.togglePersonsHandler}>Toggle persons</StyledButton>
         {persons}      
       </div>
     );
