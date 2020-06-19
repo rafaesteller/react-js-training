@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -9,8 +10,10 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "process": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -22,5 +25,8 @@
         "react"
     ],
     "rules": {
+        "react/prop-types": 0,
+        "no-console": "off",
+        "react/self-closing-comp": "off"
     }
 }

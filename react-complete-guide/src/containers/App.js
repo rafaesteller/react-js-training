@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import styled from 'styled-components';
 import Persons from '../components/Persons/Persons';
-
-const StyledButton = styled.button`
-background-color: ${props => props.alt ? 'red' : 'green'};
-font: inherit;
-color: white;
-border: 1px solid blue;
-padding: 8px;
-cursor: pointer;
-
-&:hover {
-  background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-  color: black;
-}
-`;
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  state = {
+   state = {
     persons: [
       {id: 1, 'name': 'sdsd', 'age': '29'},
       {id:2,'name': 'Ash', 'age': '19'},
@@ -58,43 +44,18 @@ class App extends Component {
     this.setState( {showPersons: !this.state.showPersons})
   }
 
-  render() {
-   
-
-    let persons = null;
-
-    if ( this.state.showPersons ) {
-      persons = (
-        <div>
-          <Persons 
-          persons = {this.state.persons}
-          clicked = {this.deletePersonHandler}
-          changed = {this.nameChangedHandler}
-          ></Persons>                
-        </div>
-      )   
-
-    }
-
-    const assignedClasses = [];
-    if( this.state.persons.length <= 2) {
-      assignedClasses.push (classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
-    }
-    
+  render() {       
     return (
-      <div className="App">
-       <h1>I am react</h1>
-    <p> className ={assignedClasses.join('')}Some poeple here</p>
-        <StyledButton alt={this.state.showPersons} 
-        onClick={this.togglePersonsHandler}>Toggle persons</StyledButton>
-        {persons}      
+      <div className={classes.App}>
+       <Cockpit showPerson={this.state.showPersons} persons={this.state.persons}/>
+       <Persons 
+            persons = {this.state.persons}
+            clicked = {this.deletePersonHandler}
+            changed = {this.nameChangedHandler}
+          />      
       </div>
     );
-
-  };
-};
+  }
+}
 
 export default App;
