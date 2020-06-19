@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import styled from 'styled-components';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
 
 const StyledButton = styled.button`
 background-color: ${props => props.alt ? 'red' : 'green'};
@@ -66,24 +66,28 @@ class App extends Component {
     if ( this.state.showPersons ) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person 
-              click={() => this.deletePersonHandler(index)} 
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-            })
-          }       
+          <Persons 
+          persons = {this.state.persons}
+          clicked = {this.deletePersonHandler}
+          changed = {this.nameChangedHandler}
+          ></Persons>                
         </div>
       )   
 
+    }
+
+    const assignedClasses = [];
+    if( this.state.persons.length <= 2) {
+      assignedClasses.push (classes.red);
+    }
+    if (this.state.persons.length <= 1) {
+      assignedClasses.push(classes.bold);
     }
     
     return (
       <div className="App">
        <h1>I am react</h1>
-       <p>Some poeple here</p>
+    <p> className ={assignedClasses.join('')}Some poeple here</p>
         <StyledButton alt={this.state.showPersons} 
         onClick={this.togglePersonsHandler}>Toggle persons</StyledButton>
         {persons}      
