@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Cockpit.css'
 
 const cockpit = (props) => {
-    const assignedClasses = [];
+    const assignedClasses = [];    
     let btnClass = '';
     if(props.showPersons) {
         btnClass = classes.Red
@@ -18,7 +18,7 @@ const cockpit = (props) => {
         <div className={classes.Cockpit} >        
         <h1>Hi, I am a React App</h1>
         <p className={assignedClasses.join(' ')}>This is really working!</p>
-        <button className={btnClass} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={props.clicked}>
           Toggle Persons
         </button>
       </div>)
