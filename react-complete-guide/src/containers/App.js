@@ -5,14 +5,46 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor')
+  }
+
+
+  static getDerivedStateFromProps(props,state){
+    console.log('[App.js] getDerivedStateFromProps', props)
+    return state;
+  }
+  
+  //Will be deprecated? Preparing your state correctly
+  componentWillMount() {
+    console.log('[App.js] componentWillMount')
+
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+  
    state = {
     persons: [
       {id: 1, 'name': 'sdsd', 'age': '29'},
       {id:2,'name': 'Ash', 'age': '19'},
       {id: 3, 'name': 'Jon', 'age': '59'},
     ],
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
+
+  shouldComponentUpdate() {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+
+  }
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate')
+
+  }
 
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons]
@@ -49,7 +81,7 @@ class App extends Component {
 
   
   render() {    
-       
+    console.log('[App.js} render');
     let persons = null;
   
     if (this.state.showPersons) {
@@ -61,7 +93,14 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-       <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler}/>
+        <button onClick={() => {this.setState({showCockpit: false});}}>Remove cockpit</button>
+       {this.state.showCockpit &&
+       <Cockpit 
+        title={this.props.appTitle} 
+        showPersons={this.state.showPersons} 
+        personsLength={this.state.persons.length} 
+        clicked={this.togglePersonsHandler}/>
+      }
        {persons}
       </div>
     );

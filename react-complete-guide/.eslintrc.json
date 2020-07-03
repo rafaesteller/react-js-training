@@ -27,6 +27,7 @@
     "rules": {
         "react/prop-types": 0,
         "no-console": "off",
-        "react/self-closing-comp": "off"
+        "react/self-closing-comp": "off",
+        "no-unused-vars": "off"
     }
 }
