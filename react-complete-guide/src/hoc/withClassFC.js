@@ -5,7 +5,7 @@ const withClassFC = (WrappedComponent, className) => {
     // eslint-disable-next-line react/display-name
     return props => (
         <div className={className}>
-            <WrappedComponent/>
+            <WrappedComponent {...props} />
         </div>
     );
 } 
