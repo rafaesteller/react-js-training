@@ -31,9 +31,9 @@ class App extends Component {
   
    state = {
     persons: [
-      {id: 1, 'name': 'sdsd', 'age': '29'},
-      {id:2,'name': 'Ash', 'age': '19'},
-      {id: 3, 'name': 'Jon', 'age': '59'},
+      {id: 1, 'name': 'sdsd', 'age': 29},
+      {id:2,'name': 'Ash', 'age': 19},
+      {id: 3, 'name': 'Jon', 'age': 59},
     ],
     showPersons: false,
     showCockpit: true,
